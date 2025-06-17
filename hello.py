@@ -8,6 +8,13 @@ def greet(name="World"):
     return f"Hello, {name}!"
 
 if __name__ == "__main__":
-    message = greet("AI Learner")
+    # Ask for user's name
+    user_name = input("Please enter your name (or press Enter for default): ")
+    
+    # Use the entered name if provided, otherwise use default
+    if user_name:
+        message = greet(user_name)
+    else:
+        message = greet()
+    
     print(message)
-    print(greet()) # This will greet "Hello, World!"
