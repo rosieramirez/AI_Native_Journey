@@ -4,7 +4,10 @@ def greet(name="World"):
     """
     This function greets the given name.
     If no name is provided, it greets "World".
+    If the name is Rosie, it gives a special greeting.
     """
+    if name.lower() == "rosie":
+        return "Hey, it's the awesome AI Director, Rosie!"
     return f"Hello, {name}!"
 
 if __name__ == "__main__":
