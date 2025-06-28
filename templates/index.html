@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Python Learner</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css" rel="stylesheet">
+
+    <style>
+      .completed-lesson {
+        position: relative;
+      }
+      .completed-lesson::after {
+        content: '✓';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #4ade80;
+        font-size: 1.5rem;
+      }
+      .hint-message {
+        background-color: #2d4a63;
+        border-left: 4px solid #3d92f4;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#101923] dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#223449] px-10 py-3">
+          <div class="flex items-center gap-4 text-white">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path></svg>
+            </div>
+            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Python Learner</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-white text-sm font-medium leading-normal" href="#" id="lessonsNav">Lessons</a>
+              <a class="text-white text-sm font-medium leading-normal" href="#" id="exercisesNav">Exercises</a>
+              <a class="text-white text-sm font-medium leading-normal" href="#" id="projectsNav">Projects</a>
+              <a class="text-white text-sm font-medium leading-normal" href="#" id="progressNav">Progress</a>
+            </div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <!-- Welcome Banner -->
+            <div class="@container mb-8">
+              <div class="@[480px]:px-4 @[480px]:py-3">
+                <div
+                  class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-[#101923] @[480px]:rounded-xl min-h-80"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGX1KQXeTh710GqSBHvzw76G7z1wp-l3nm7_AoBFLkP00q2aAJWhC1kHdngSv8Ry4hMbq6DYTJx6QgBOpqXxwjONKd4v-yORnYcbKnPj7zxIpYRILiq0MbJOPedunaL4hTZTZ24Dk3OgbRuW1Vi2uZaTC9alRGP3uy4A0uiloF8VW-tJvBucXRCyhEAzaB7iI2ah23cK06-0JTkKbpJ4PVeSkjFfGcDg-jpUR6jEwK-SEndBDcAg20I_PDU6eNTlcbPX3lZAMCGYmt");'
+                ></div>
+              </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div id="mainContent">
+              <!-- Lessons View -->
+              <div id="lessonsView">
+                <h2 class="text-white tracking-light text-[28px] font-bold leading-tight px-4 text-left pb-3">Welcome to Python Learning!</h2>
+                <p class="text-white text-base font-normal leading-normal pb-6 px-4">
+                  Embark on your Python journey with interactive lessons, exercises, and projects. Track your progress and achieve your learning goals.
+                </p>
+
+                <!-- Lesson Cards -->
+                <div class="grid gap-6 px-4">
+                  <!-- Introduction to Python -->
+                  <div class="bg-[#1a2632] rounded-xl overflow-hidden">
+                    <div class="p-6">
+                      <h3 class="text-white text-xl font-bold mb-2">Introduction to Python</h3>
+                      <p class="text-[#90abcb] mb-4">Learn the fundamentals of Python programming language.</p>
+                      <button onclick="loadLesson('basics', 'variables')" class="bg-[#3d92f4] text-white px-6 py-2 rounded-full hover:bg-[#2d82e4] transition-colors">
+                        Start Learning
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Control Flow -->
+                  <div class="bg-[#1a2632] rounded-xl overflow-hidden">
+                    <div class="p-6">
+                      <h3 class="text-white text-xl font-bold mb-2">Control Flow</h3>
+                      <p class="text-[#90abcb] mb-4">Master conditional statements and loops in Python.</p>
+                      <button onclick="loadLesson('basics', 'control_flow')" class="bg-[#3d92f4] text-white px-6 py-2 rounded-full hover:bg-[#2d82e4] transition-colors">
+                        Start Learning
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Functions -->
+                  <div class="bg-[#1a2632] rounded-xl overflow-hidden">
+                    <div class="p-6">
+                      <h3 class="text-white text-xl font-bold mb-2">Functions</h3>
+                      <p class="text-[#90abcb] mb-4">Learn to create and use functions effectively.</p>
+                      <button onclick="loadLesson('basics', 'functions')" class="bg-[#3d92f4] text-white px-6 py-2 rounded-full hover:bg-[#2d82e4] transition-colors">
+                        Start Learning
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Code Editor View -->
+              <div id="codeEditorView" class="hidden">
+                <div class="bg-[#1a2632] rounded-xl p-6">
+                  <div class="flex justify-between items-center mb-6">
+                    <h3 id="lessonTitle" class="text-white text-xl font-bold"></h3>
+                    <button onclick="showLessons()" class="text-[#90abcb] hover:text-white transition-colors">
+                      ← Back to Lessons
+                    </button>
+                  </div>
+                  <div id="lessonContent" class="text-white mb-6 prose prose-invert"></div>
+                  <div class="mb-4">
+                    <textarea id="code-editor"></textarea>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div class="flex gap-4">
+                      <button onclick="runCode()" class="bg-[#3d92f4] text-white px-6 py-2 rounded-full hover:bg-[#2d82e4] transition-colors">
+                        Run Code
+                      </button>
+                      <button onclick="checkSolution()" class="bg-[#223449] text-white px-6 py-2 rounded-full hover:bg-[#2d4a63] transition-colors">
+                        Check Solution
+                      </button>
+                    </div>
+                    <button onclick="markComplete()" id="completeButton" class="hidden bg-[#4ade80] text-white px-6 py-2 rounded-full hover:bg-[#3acc70] transition-colors">
+                      Mark Complete
+                    </button>
+                  </div>
+                  <div id="hint" class="hint-message hidden"></div>
+                  <div id="output" class="mt-4 p-4 bg-[#223449] rounded-lg text-white font-mono min-h-[100px]">
+                    Output will appear here...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let editor;
+      let currentLesson = null;
+      let completedLessons = new Set();
+
+      // Initialize CodeMirror and load progress
+      document.addEventListener('DOMContentLoaded', function() {
+        editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+          mode: 'python',
+          theme: 'monokai',
+          lineNumbers: true,
+          indentUnit: 4,
+          autoCloseBrackets: true,
+          matchBrackets: true,
+          lineWrapping: true,
+          tabSize: 4,
+          indentWithTabs: false,
+          extraKeys: {
+            "Tab": function(cm) {
+              cm.replaceSelection("    ", "end");
+            }
+          }
+        });
+
+        // Load progress
+        fetch('/api/progress')
+          .then(response => response.json())
+          .then(progress => {
+            completedLessons = new Set(progress);
+            updateLessonCompletionStatus();
+          });
+      });
+
+      function updateLessonCompletionStatus() {
+        document.querySelectorAll('.lesson-card').forEach(card => {
+          const lessonId = card.dataset.lessonId;
+          if (completedLessons.has(lessonId)) {
+            card.classList.add('completed-lesson');
+          }
+        });
+      }
+
+      function loadLesson(category, topicId) {
+        currentLesson = { category, topicId };
+        fetch(`/api/lesson/${category}/${topicId}`)
+          .then(response => response.json())
+          .then(lesson => {
+            document.getElementById('lessonsView').style.display = 'none';
+            document.getElementById('codeEditorView').style.display = 'block';
+            document.getElementById('lessonTitle').textContent = lesson.title;
+            document.getElementById('lessonContent').innerHTML = lesson.content_html;
+            editor.setValue(lesson.exercise || '# Write your code here');
+            editor.refresh();
+            
+            // Show/hide complete button based on completion status
+            const completeButton = document.getElementById('completeButton');
+            completeButton.style.display = completedLessons.has(topicId) ? 'none' : 'block';
+            
+            // Clear previous outputs
+            document.getElementById('output').innerHTML = 'Output will appear here...';
+            document.getElementById('hint').style.display = 'none';
+          });
+      }
+
+      function checkSolution() {
+        if (!currentLesson) return;
+        
+        const code = editor.getValue();
+        fetch('/api/validate_code', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            code: code,
+            category: currentLesson.category,
+            lesson_id: currentLesson.topicId
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          const hintDiv = document.getElementById('hint');
+          if (!data.success && data.hint) {
+            hintDiv.textContent = data.hint;
+            hintDiv.style.display = 'block';
+          } else {
+            hintDiv.style.display = 'none';
+            if (data.success) {
+              document.getElementById('completeButton').style.display = 'block';
+            }
+          }
+        });
+      }
+
+      function markComplete() {
+        if (!currentLesson) return;
+        
+        fetch('/api/complete_lesson', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            lesson_id: currentLesson.topicId
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            completedLessons.add(currentLesson.topicId);
+            document.getElementById('completeButton').style.display = 'none';
+            updateLessonCompletionStatus();
+          }
+        });
+      }
+
+      function runCode() {
+        const code = editor.getValue();
+        fetch('/api/run_code', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            code: code,
+            category: currentLesson?.category,
+            lesson_id: currentLesson?.topicId
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          const outputDiv = document.getElementById('output');
+          const hintDiv = document.getElementById('hint');
+          
+          if (data.error) {
+            if (data.is_hint) {
+              hintDiv.textContent = data.error;
+              hintDiv.style.display = 'block';
+            } else {
+              outputDiv.innerHTML = `<span class="text-red-500">${data.error}</span>`;
+            }
+          } else {
+            outputDiv.innerHTML = `<span class="text-green-400">${data.output || 'Code executed successfully!'}</span>`;
+            hintDiv.style.display = 'none';
+          }
+        })
+        .catch(error => {
+          document.getElementById('output').innerHTML = 
+            `<span class="text-red-500">Error running code: ${error}</span>`;
+        });
+      }
+
+      function showLessons() {
+        document.getElementById('lessonsView').style.display = 'block';
+        document.getElementById('codeEditorView').style.display = 'none';
+      }
+
+      // Navigation
+      document.getElementById('lessonsNav').addEventListener('click', function(e) {
+        e.preventDefault();
+        showLessons();
+      });
+    </script>
+  </body>
+</html> 

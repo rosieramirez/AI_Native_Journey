@@ -1,53 +1,82 @@
-# AI Native Journey
+# Python Learning Platform
 
-Welcome to the AI Native Journey project! This repository is dedicated to exploring and implementing AI-native development practices and solutions.
+An interactive web-based platform for learning Python programming. Features a modern dark theme interface, interactive code execution, and progress tracking.
 
-## Overview
+## Features
 
-This project aims to demonstrate and explore various aspects of AI-native development, including:
-- AI-powered development workflows
-- Integration of AI tools and services
-- Best practices for AI-assisted coding
-- Modern development techniques
+- 🎨 Modern dark theme UI with Tailwind CSS
+- 📝 Interactive Python code editor with syntax highlighting
+- 🔄 Real-time code execution
+- 📊 Progress tracking
+- 💡 Smart code validation and hints
+- 📚 Structured lessons from basics to intermediate
+- 🔒 Secure code execution environment
 
 ## Getting Started
 
 ### Prerequisites
 
-- [List any prerequisites here]
-- [Add version requirements if applicable]
+- Python 3.8 or higher
+- pip (Python package installer)
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
-cd AI_Native_Journey
+git clone https://github.com/yourusername/python-learning-platform.git
+cd python-learning-platform
 ```
 
-2. [Add installation steps specific to your project]
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-## Project Structure
+3. Run the application:
+```bash
+flask run --port 8000
+```
 
-[This section will be updated as the project grows]
+4. Open your browser and navigate to:
+```
+http://localhost:8000
+```
 
-## Features
+## Available Lessons
 
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
+### Basics
+- Variables and Data Types
+- Control Flow (if statements, loops)
+- Functions
+
+### Intermediate
+- List Comprehension
+
+## Security Features
+
+- Restricted Python builtins
+- Secure code execution environment
+- Timeout protection
+- Content Security Policy (CSP)
+- CORS protection
+- XSS protection
+
+## Development
+
+The application is built with:
+- Flask (Backend)
+- Tailwind CSS (Styling)
+- CodeMirror (Code Editor)
+- Modern JavaScript (Frontend)
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-[Choose an appropriate license for your project]
-
-## Contact
-
-[Your contact information or preferred method of communication]
-
----
-*This README is a living document and will be updated as the project evolves.* 
+This project is licensed under the MIT License - see the LICENSE file for details. 

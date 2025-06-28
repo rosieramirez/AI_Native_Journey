@@ -1,0 +1,50 @@
+[
+    {
+        "Item Name": "Miu Miu ",
+        "Category": "Dress",
+        "Color": "Pink ",
+        "Size": "S",
+        "Brand": "Miu Miu",
+        "Image File": "NONE"
+    },
+    {
+        "Item Name": "Armani Suit",
+        "Category": "Suit",
+        "Color": "Chocolate",
+        "Size": "S",
+        "Brand": "Armani",
+        "Image File": "NONE"
+    },
+    {
+        "Item Name": "Reebok Tabi's",
+        "Category": "Shoes",
+        "Color": "White",
+        "Size": "6.5",
+        "Brand": "Reebok/Maison Margiela ",
+        "Image File": "NONE"
+    },
+    {
+        "Item Name": "Rag & Bone Sneakers",
+        "Category": "Shoes",
+        "Color": "White",
+        "Size": "6.5",
+        "Brand": "Rag & Bone",
+        "Image File": "None"
+    },
+    {
+        "Item Name": "",
+        "Category": "",
+        "Color": "",
+        "Size": "",
+        "Brand": "",
+        "Image File": ""
+    },
+    {
+        "Item Name": "Gown",
+        "Category": "Dress",
+        "Color": "Blue",
+        "Size": "S",
+        "Brand": "NONE",
+        "Image File": "NONE"
+    }
+]
